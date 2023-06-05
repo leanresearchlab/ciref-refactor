@@ -38,7 +38,7 @@ class RefactController {
         val arrayTutorialType = object : TypeToken<Array<Refact>>() {}.type
 
         var refacts = mutableListOf<String>();
-        miner.detectAll(repo, "master", object : RefactoringHandler() {
+        miner.detectAll(repo, request.branch, object : RefactoringHandler() {
             override fun handle(commitId: String, refactorings: List<Refactoring?>) {
                 println("Refactorings at $commitId")
                 for (ref in refactorings) {
